@@ -35,7 +35,7 @@ let Category = {
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 ">
                 ${mealsList.map((meal) => {
                   return `
-                    <a href="/src/category/${
+                    <a href="#/category/${
                       meal.strMeal / meal.idMeal
                     }" class=" shadow-md relative rounded-2xl">
                       <div class="h-full relative shadow-md overflow-hidden group rounded-2xl">
@@ -55,7 +55,7 @@ let Category = {
                       </div>
                   </a>
                   `;
-                })}
+                }).join("\n ")}
                 </div>
               </div>
             </section>

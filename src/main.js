@@ -7,8 +7,8 @@ import Category from "./views/pages/Category.js";
 const routes = {
   "/": Home,
     // "/category": Category,
-  // "/category/:id": Category,
-  "/category": Category,
+  "/category/:id": Category,
+  // "/category": Category,
 };
 
 const router = async () => {
