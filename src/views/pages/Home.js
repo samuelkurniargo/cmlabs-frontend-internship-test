@@ -4,7 +4,6 @@ let getCategoriesList = async () => {
       "https://www.themealdb.com/api/json/v1/1/categories.php"
     );
     const data = response.data.categories;
-    // console.log(data)
     return data;
   } catch (error) {
     console.log(error);
@@ -14,7 +13,6 @@ let getCategoriesList = async () => {
 let Home = {
   render: async () => {
     let categories = await getCategoriesList();
-    // console.log(categories);
     let view = `
         <div class="hero">
             <div class="bg-white">
@@ -42,8 +40,10 @@ let Home = {
               <h2 class="sr-only">Meals</h2>
               <div id="category-list-container"
               class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              ${categories.map((category) =>` 
-                  <a href="#category/${category.strCategory}" class="group">
+              ${categories
+                .map(
+                  (category) => ` 
+                  <a href="#/category/${category.strCategory}" class="group">
                       <div class="relative flex flex-col justify-center bg-gray-50">
                       <div
                           class="group relative m-0 flex rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
@@ -60,7 +60,8 @@ let Home = {
                       </div>
                       </div>
                   </a>`
-              ).join('\n ')}
+                )
+                .join("\n ")}
               </div>
             </div>
             </div>

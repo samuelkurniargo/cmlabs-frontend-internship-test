@@ -3,33 +3,29 @@ import Utils from "./services/Utils.js";
 
 import Home from "./views/pages/Home.js";
 import Category from "./views/pages/Category.js";
+import Meal from "./views/pages/Meal.js";
 
 const routes = {
   "/": Home,
-    // "/category": Category,
   "/category/:id": Category,
-  // "/category": Category,
+  "/category/:id/:id": Meal,
 };
 
 const router = async () => {
-  console.log("router")
   const content = null || document.getElementById("main-content");
 
   // Get parsed URL from addressbar
   let request = Utils.parseRequestURL();
-  console.log(request)
 
   // Parse the URL and if it has an id part, change it with the string "id"
   let parsedURL =
     (request.resource ? "/" + request.resource : "/") +
     (request.id ? "/:id" : "") +
-    (request.verb ? "/" + request.verb : "");
+    (request.verb ? "/:id" : "");
 
   // Get the page from our hash of supported routes
   // If the parsed URL is not in our list of supported routes, select the 404 page instead
   let page = routes[parsedURL] ? routes[parsedURL] : routes["/404"];
-  
-  console.log(page)
   content.innerHTML = await page.render();
   await page.afterRender();
 };
